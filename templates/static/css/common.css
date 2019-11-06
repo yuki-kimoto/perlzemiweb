@@ -13,7 +13,7 @@
   
   /* header */
   .header {
-    background:white;
+    background:#fdffde;
     margin-bottom:15px;
   }
   
@@ -98,7 +98,7 @@
   }
   h3 {
     font-size:18px;
-    border-left:7px solid #ddd;
+    border-left:7px solid #FFC801;
     padding:6px 0px 4px 12px;
     letter-spacing:0.5px;
     margin:15px 0 10px 0;
@@ -165,7 +165,7 @@
     box-shadow: 0 0 3px rgba(0,0,0,.1);
   }
   .side-list-title {
-    background:#222;
+    background:#FFC801;
     color:white;
     font-weight:bold;
     padding: 7px 0px 5px 0px;
