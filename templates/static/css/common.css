@@ -226,6 +226,37 @@
     padding-left:115px;
   }
 
+  .bread {
+    border:none;
+    background:none;
+    padding:0;
+  }
+  .bread-home {
+    display:block;
+    width:24px;
+    height:24px;
+    background: #d00;
+    padding:2px;
+    border-radius:3px;
+  }
+  .bread img {
+    width:100%;
+  }
+  .bread li {
+    display:inline-block;
+    list-style-type:none;
+    font-size:14px;
+    margin:0;
+    padding:0;
+  }
+  .bread a {
+  }
+  .bread a:hover {
+  }
+  .bread a:visited {
+    color:white;
+  }
+
 /* Tablet and Smart phone */
 @media only screen and (max-width:960px) {
   .content {
