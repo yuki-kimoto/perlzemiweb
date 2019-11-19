@@ -1,0 +1,84 @@
+<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
+  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <a itemprop="item" href="/" class="bread-home">
+      <span itemprop="name">
+        <img src="/images/bread/home.png" alt="Mojoliciousスタートアップ">
+      </span>
+    </a>
+    <meta itemprop="position" content="1" />
+  </li>
+  &#8250;
+  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    here
+  </li>
+</ol>
+
+<h2>macOSにおけるWeb開発環境の構築</h2>
+
+まず最初にmacOSにおける開発環境構築を行います。macOSは、2019年における、Macと呼ばれるOSの正式名称です。過去にはMac OS Xと呼ばれていることもありました。
+
+macOSのベースはUnixで、開発環境として利用できるターミナルと呼ばれるCUI環境が付属しています。
+
+Unixというのは、サーバーの用途で広く利用されているOSのことです。
+
+Mojoliciousスタートアップで開発するPerlのWebアプリケーションは、Unix/Linux環境で実行されることを前提としています。
+
+この環境にPerlとMojoliciousをインストールすると、macOS上で、Web開発を試すことができます。
+
+CUI環境というのは、コマンドラインユーザーインターフェイスの略で、コマンド(文字列)をキーボードで記述することで、プログラムを実行できる環境のことをいいます。
+
+<h3>ターミナルの起動</h3>
+
+Mojoliciousスタートアップで開発するPerlのWebアプリケーションは、ターミナルと呼ばれるCUI環境を使って開発します。
+
+macOSには、ターミナルと呼ばれるソフトウェアが標準で添付されています。
+
+まず作業の最初として、ターミナルを起動します。
+
+ターミナルを起動する方法は、以下の記事を参考になります。
+
+<ul>
+  <li><a href="https://syncer.jp/mac-terminal">Macでターミナルを起動する方法</a></li>
+</ul>
+
+うまくターミナルが起動しましたか。
+
+<h3>Command Line Toolsのインストール</h3>
+
+まず最初にCommand Line Toolsと呼ばれるものをインストールします。これは、macOSに、Perlをインストールする前提として、必要になるものです。Xcodeのインストールでもかまいませんが、こちらは容量が大きいです。Command Line Toolsは、容量が小さく、CUI環境で必要となるものだけをインストールできます。
+
+Command Line Toolsのインストールは管理者権限で実行します。
+
+Command Line Toolsをインストールするには、以下の記事を参考になります。
+
+<ul>
+  <li><a href="https://se-note.tenouti.com/archives/581">Command Line Toolsのインストール</a></li>
+</ul>
+
+うまくCommand Line Toolsがインストールできましたか。
+
+<h3>Perlのインストール</h3>
+
+次にPerlをインストールしましょう。
+
+macOSへのPerlのインストール方法は、Perl入門ゼミの以下の記事で解説されていますので、チャレンジしてみましょう。perlbrewまたは、plenvというツールを使って、Perlをインストールします。選択はお好みで。
+
+<ul>
+  <li><a href="https://tutorial.perlzemi.com/blog/20180814153419.html">macOSへのPerlのインストール</a></li>
+</ul>
+
+macOSには、Perlがデフォルトで利用可能ですが、Web開発で使うPerlは、上記手順でインストールしたものを使います。一番大きな理由は、CPANというサイトからモジュールをインストールするのに、デフォルトのPerlでは、うまくいかないからです。モジュールというのは、プログラムの部品という意味です。
+
+<h3>Mojoliciousのインストール</h3>
+
+最後に、macOSへのPerlのインストールで、インストールしたcpanmというツールを使ってMojoliciousをインストールします。
+
+<pre>
+cpanm Mojolicious
+</pre>
+
+インストールお疲れさまでした。
+
+無事に、Command Line Tools、Perl、Mojoliciousのインストールが完了しましたか? 
+
+外部リンクが切れている場合、インストールで困ったという場合は、Perlゼミフォーラムで質問できるので、ご利用ください。
