@@ -34,11 +34,50 @@ Mojoliciousスタートアップでは、これらの情報も任意で登録で
 <pre>
 <div class="signup">
   <div class="signup-block">
-    <div class="signup-title">会員登録</div>
-    <%= text_field 'mail', placeholder => 'メールアドレス' %>
-    <%= text_field 'code', placeholder => 'ユーザーID' %>
-    <%= password_field 'password', placeholder => 'パスワード' %>
-    <%= submit_button '確認画面へ' %>
+    <form action="<%= url_for %>" method="POST">
+      <div class="signup-title">会員登録</div>
+      <%= text_field 'mail', placeholder => 'メールアドレス' %>
+      <%= text_field 'code', placeholder => 'ユーザーID' %>
+      <%= password_field 'password', placeholder => 'パスワード' %>
+      <%= text_field 'name', placeholder => '名前' %>
+      <%= text_field 'zip_code', placeholder => '郵便番号' %>
+      <%= text_field 'address', placeholder => '住所' %>
+      <%= text_field 'tel', placeholder => '電話番号' %>
+      <%= submit_button '確認画面へ' %>
+    </form>
   </div>
 </div>
 </pre>
+
+登録フォームのスタイルシートは「public/css/default.css」に記述してください。スマートフォン対応のCSS設定がされていることが前提になります。
+
+<pre>
+  .signup {
+    
+  }
+  .signup-block {
+    width:calc(100% - 15px);
+    max-width:400px;
+    margin-left:auto;
+    margin-right:auto;
+    padding:10px;
+    border:1px solid #ddd;
+  }
+  .signup-title {
+    
+  }
+  .signup-title input[name=text] {
+    
+  }
+  .signup-title input[name=password] {
+    
+  }
+</pre>
+
+<h4>タグヘルパー</h4>
+
+「text_field」「password_field」というのは、Mojoliciousのタグヘルパーです。text_fieldは、自動的にフォームに値を復元してくれるので便利です。たとえば、フォームの内容に間違いがあった場合に、同じ画面を表示することになりますが、このときに、値を自動的に復元してくれるのです。
+
+<h4>actionのurl_forメソッド</h4>
+
+url_forメソッドに引数を与えなかった場合は、現在のURLを返してくれます。現在のURLのPOSTの処理で、この後の処理を行います。
