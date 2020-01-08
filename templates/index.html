@@ -115,4 +115,23 @@ PerlのMojoliciousと、さくらVPS、CentOS 7を使った、新規Web開発の
   <li><a href="/blog/20191029080630.html">ログイン機能を使ったユーザー認証の作り方</a></li>
 </ul>
 
-<h3>Webサービスの公開</h3>
+<!-- <h3>Webサービスの公開</h3> -->
+
+<h3>よくある質問</h3>
+
+<h4>ページごとにルーティングを設定するのがめんどうなのですが、自動的に設定する方法はありますか?</h4>
+
+Mojolicious::Plugin::AutoRouteというモジュールを使うと、テンプレートを配置するだけで、自動的にルーティングを作成してくれます。
+
+<pre>
+# Mojolicious
+$self->plugin('AutoRoute');
+
+# Mojolicious::Lite
+plugin 'AutoRoute';
+
+# Option
+plugin 'AutoRoute', route => $r;
+</pre>
+
+<a href="https://tutorial.perlzemi.com/blog/20130731137527.html">ファイルを配置でルーティングを自動生成 - Mojolicious::Plugin::AutoRoute</a>
