@@ -31,6 +31,10 @@ Mojoliciousスタートアップでは、これらの情報も任意で登録で
 
 会員登録フォームを作成してみましょう。
 
+次のような会員フォームを作成できます。
+
+<a href="http://www.perlzemi.com/signup">会員登録フォームのサンプル</a>
+
 <pre>
 <div class="signup">
   <div class="signup-block">
@@ -39,11 +43,7 @@ Mojoliciousスタートアップでは、これらの情報も任意で登録で
       <%= text_field 'mail', placeholder => 'メールアドレス' %>
       <%= text_field 'code', placeholder => 'ユーザーID' %>
       <%= password_field 'password', placeholder => 'パスワード' %>
-      <%= text_field 'name', placeholder => '名前' %>
-      <%= text_field 'zip_code', placeholder => '郵便番号' %>
-      <%= text_field 'address', placeholder => '住所' %>
-      <%= text_field 'tel', placeholder => '電話番号' %>
-      <%= submit_button '確認画面へ' %>
+      <%= submit_button '確認画面へ(準備中)' %>
     </form>
   </div>
 </div>
@@ -52,25 +52,52 @@ Mojoliciousスタートアップでは、これらの情報も任意で登録で
 登録フォームのスタイルシートは「public/css/default.css」に記述してください。スマートフォン対応のCSS設定がされていることが前提になります。
 
 <pre>
+  /* 会員登録 */
   .signup {
     
   }
+  .signup-title {
+    font-weight:bold;
+    text-align:center;
+    font-size:18px;
+  }
   .signup-block {
     width:calc(100% - 15px);
-    max-width:400px;
+    max-width:500px;
+    margin-top:20px;
     margin-left:auto;
     margin-right:auto;
     padding:10px;
     border:1px solid #ddd;
+    border-radius:5px;
   }
   .signup-title {
     
   }
-  .signup-title input[name=text] {
-    
+  .signup input[type=text], .signup input[type=password] {
+    display:block;
+    width:calc(100% - 15px);
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:12px;
+    margin-bottom:12px;
+    padding:8px 10px;
+    border-radius:3px;
+    border:1px solid #ddd;
+    font-size:16px;
   }
-  .signup-title input[name=password] {
-    
+  .signup input[type=submit] {
+    display:block;
+    width:calc(50%);
+    max-width:500px;
+    margin-left:auto;
+    margin-right:auto;
+    background:#D82E5D;
+    border:1px solid #D82E5D;
+    color:white;
+    padding:10px 0;
+    border-radius:5px;
+    cursor:pointer;
   }
 </pre>
 
