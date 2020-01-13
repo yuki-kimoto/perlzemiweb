@@ -1,0 +1,49 @@
+<h2>ユーザーテーブルの作成</h2>
+
+ユーザーテーブルを作成しましょう。ユーザーテーブルとは、ユーザー情報を保存しておくデータベースのテーブルのことです。仮登録ユーザーテーブルの作成が終わったら、次は、ユーザーテーブルを作成しましょう。
+
+<h3>ユーザーテーブルとは</h3>
+
+ユーザーテーブルとは、ユーザー情報を保存しておくデータベースのテーブルのことです。次のフィールドが必要です。
+
+テーブル名は「user」にしました。
+
+<table>
+  <tr>
+    <th>フィールド</th><th>テーブルのフィールド名</th><th>型</th><th>制約</th>
+  </tr>
+  <tr>
+    <td>行ID</td><td>id</td><td>32bit整数</td><td>プライマリーキー、自動インクリメント</td>
+  </tr>
+  <tr>
+    <td>ユーザーID</td><td>code</td><td>文字列</td><td>非ヌル、ユニーク </td>
+  </tr>
+  <tr>
+    <td>ハッシュ化されたパスワード</td><td>password_crypted</td><td>文字列</td><td>非ヌル</td>
+  </tr>
+  <tr>
+    <td>メールアドレス</td><td>mail</td><td>文字列</td><td>非ヌル</td>
+  </tr>
+</table>
+
+氏名、住所、電話番号、希望条件など、会員登録フォームに、他の入力項目がある場合などは、そのフィールドも必要になります。
+
+<h4>mysqlでユーザーテーブルを作成</h4>
+
+mysqlでユーザーテーブルを作成してみましょう。
+
+<pre>
+create table user (
+  id int primary key auto_increment,
+  code varchar(150) not null default '',
+  password_crypted varchar(150) not null default '',
+  mail varchar(150) not null default '',
+  unique(code),
+) ENGINE=InnoDB CHARSET=utf8mb4;
+</pre>
+
+utf8mb4がサポートされていない場合は、utf8に書き換えてください。
+
+<h3>フィールドの解説</h3>
+
+フィールドは、トークンを除いて、仮登録ユーザーテーブルと同じですので、<a href="/blog/20200110081755.html">仮登録ユーザーテーブルの作成</a>の記事を参考にしてください。
