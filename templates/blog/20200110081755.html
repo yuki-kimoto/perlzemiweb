@@ -47,6 +47,7 @@ create table user_tmp_regist (
   token varchar(150) not null default '',
   token_expiration bigint not null default 0,
   unique(code),
+  unique(mail),
   unique(token)
 ) ENGINE=InnoDB CHARSET=utf8mb4;
 </pre>
@@ -71,7 +72,7 @@ Mojoliciousスタートアップでは、行を一意に識別できるIDのこ�
 
 ユーザーIDは「kimoto」や「tanaka」のような、ユーザーを一意に識別するIDです。codeというフィールド名です。
 
-ユーザーIDは、一意なので、unique制約を設定します。
+ユーザーIDは、一意である必要があるので、unique制約を設定します。
 
 型は文字列型のvarchar型です。指定した文字数以内の文字を保存できます。varchar(150)のように、最大150文字を保存できるように設定しています。
 
@@ -85,11 +86,11 @@ Mojoliciousスタートアップでは、行を一意に識別できるIDのこ�
 
 <h4>メールアドレス</h4>
 
-ユーザーのメールアドレスです。
+ユーザーのメールアドレスです。メールアドレスは、一意である必要があるので、unique制約を設定します。
 
 <h4>トークン</h4>
 
-メールを送信してユーザー認証を行うために発行されるユニークなトークンです。「356a192b7913b04c54574d18c28d46e6395428ab」のような、ランダムな値です。
+メールを送信してユーザー認証を行うために発行されるユニークなトークンです。「356a192b7913b04c54574d18c28d46e6395428ab」のような、ランダムな値です。トークンは、一意である必要があるので、unique制約を設定します。
 
 <h4>トークン有効期限</h4>
 
