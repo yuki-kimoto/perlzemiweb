@@ -129,17 +129,20 @@ $pager->pages_per_navigation(10);
 
 # 10 11 12 13 14 15 16 17 18 19
 my @nav_pages = $pager->pages_in_navigation;
-<pre>
+</pre>
 
-<h4>ページネーションのサンプルコード</h4>
+<h3>ページネーションのサンプルコード</h3>
 
 ページネーションのサンプルコードです。最初のページ、前のページ、次のページ、最後のページのサンプルです。
 
+<h4>アプリケーションクラス</h4>
+
 <pre>
-# アプリケーションクラスで読み込んでおく
 use Data::Page;
 use Data::Page::Navigation;
 </pre>
+
+<h4>テンプレート</h4>
 
 <pre>
 <%
@@ -157,7 +160,10 @@ use Data::Page::Navigation;
   my $offset = $count_per_page * ($page - 1);
   
   # 本の一覧
-  my $books = $dbi->model('book')->select(['id', 'name'], append => "limit $offset, $count_per_page")->all;
+  my $books = $dbi->model('book')->select(
+    ['id', 'name'],
+    append => "limit $offset, $count_per_page"
+  )->all;
   
   # 本の総数
   my $total = $dbi->model('book')->select('count(*)')->value;
@@ -221,15 +227,19 @@ url_withとqueryへハッシュリファレンスを渡す方法を使用する�
 はい、where句を組み合わせることができます。本のタイトルに、Perlを含むの例です。
 
 <pre>
-  my $where = [
-    'title like :title', # where句
-    {title => '%Perl%'}, # パラメーター
-  ];
-  my $books = $dbi->model('book')->select(['id', 'name'], append => "limit $offset, $count_per_page", where => $where)->all;
-  my $total = $dbi->model('book')->select('count(*)', where => $where)->value;
+my $where = [
+  'title like :title', # where句
+  {title => '%Perl%'}, # パラメーター
+];
+my $books = $dbi->model('book')->select(
+  ['id', 'name'],
+  append => "limit $offset, $count_per_page",
+  where => $where
+)->all;
+my $total = $dbi->model('book')->select('count(*)', where => $where)->value;
 </pre>
 
-<h4>URLの他のクエリを残して、ページ番号だけを変えることはできますか?</h4>
+<h4>URLの他のクエリ文字列をそのままにして、ページ番号だけを変えることはできますか?</h4>
 
 ここで解説したサンプルは、ページ番号だけの変更に対応しています。
 
