@@ -133,7 +133,7 @@ my @nav_pages = $pager->pages_in_navigation;
 
 <h3>ページネーションのサンプルコード</h3>
 
-ページネーションのサンプルコードです。最初のページ、前のページ、次のページ、最後のページのサンプルです。
+ページネーションのサンプルコードです。最初のページ、前のページ、次のページ、最後のページのサンプルです。ページが複数あるときだけ、ページネーションを表示するようにしています。
 
 <h4>アプリケーションクラス</h4>
 
@@ -192,29 +192,31 @@ use Data::Page::Navigation;
     # 最初のページ
     my $first_page = $pager->first_page;
     
-    # 次のページ
+    # 最後のページ
     my $last_page = $pager->last_page;
 
     # 周辺のページ番号を取得
     my @nav_pages = $pager->pages_in_navigation;
   %>
-  <div class="pagenation">
-    <a href="<%= url_with->query({page => undef}) %>">最初へ</a>
-    % if ($previous_page) {
-      <a href="<%= url_with->query({page => $previous_page}) %>">前へ</a>
-    % }
-    % for my $nav_page (@nav_pages) {
-      % if ($nav_page eq $page) {
-        <span><%= $nav_page %></a>
-      % } else {
-        <a href="<%= url_with->query({page => $nav_page}) %>"><%= $nav_page %></a>
+  % if ($first_page != $last_page) {
+    <div class="pagenation">
+      <a href="<%= url_with->query({page => undef}) %>">最初へ</a>
+      % if ($previous_page) {
+        <a href="<%= url_with->query({page => $previous_page}) %>">前へ</a>
       % }
-    % }
-    % if ($next_page) {
-      <a href="<%= url_with->query({page => $next_page}) %>">次へ</a>
-    % }
-    <a href="<%= url_with->query({page => $last_page}) %>">最後へ</a>
-  </div>
+      % for my $nav_page (@nav_pages) {
+        % if ($nav_page eq $page) {
+          <span><%= $nav_page %></a>
+        % } else {
+          <a href="<%= url_with->query({page => $nav_page}) %>"><%= $nav_page %></a>
+        % }
+      % }
+      % if ($next_page) {
+        <a href="<%= url_with->query({page => $next_page}) %>">次へ</a>
+      % }
+      <a href="<%= url_with->query({page => $last_page}) %>">最後へ</a>
+    </div>
+  % }
 </pre>
 
 $selfはMojolicious::Controllerです。appでMojoliciousを継承しているアプリケーションオブジェクトを取得します。dbiで、DBIx::Customオブジェクトを取得しています。
@@ -260,6 +262,9 @@ stashを使ってpagerを受け取ります。
   <%
     my $pager = stash('pager');
     
+    # 現在のページ
+    my $page = $pager->current_page;
+    
     # ページナビゲーションの個数を設定
     $pager->pages_per_navigation(10);
     
@@ -272,29 +277,31 @@ stashを使ってpagerを受け取ります。
     # 最初のページ
     my $first_page = $pager->first_page;
     
-    # 次のページ
+    # 最後のページ
     my $last_page = $pager->last_page;
 
     # 周辺のページ番号を取得
     my @nav_pages = $pager->pages_in_navigation;
   %>
-  <div class="pagenation">
-    <a href="<%= url_with->query({page => undef}) %>">最初へ</a>
-    % if ($previous_page) {
-      <a href="<%= url_with->query({page => $previous_page}) %>">前へ</a>
-    % }
-    % for my $nav_page (@nav_pages) {
-      % if ($nav_page eq $page) {
-        <span><%= $nav_page %></a>
-      % } else {
-        <a href="<%= url_with->query({page => $nav_page}) %>"><%= $nav_page %></a>
+  % if ($first_page != $last_page) {
+    <div class="pagenation">
+      <a href="<%= url_with->query({page => undef}) %>">最初へ</a>
+      % if ($previous_page) {
+        <a href="<%= url_with->query({page => $previous_page}) %>">前へ</a>
       % }
-    % }
-    % if ($next_page) {
-      <a href="<%= url_with->query({page => $next_page}) %>">次へ</a>
-    % }
-    <a href="<%= url_with->query({page => $last_page}) %>">最後へ</a>
-  </div>
+      % for my $nav_page (@nav_pages) {
+        % if ($nav_page eq $page) {
+          <span><%= $nav_page %></a>
+        % } else {
+          <a href="<%= url_with->query({page => $nav_page}) %>"><%= $nav_page %></a>
+        % }
+      % }
+      % if ($next_page) {
+        <a href="<%= url_with->query({page => $next_page}) %>">次へ</a>
+      % }
+      <a href="<%= url_with->query({page => $last_page}) %>">最後へ</a>
+    </div>
+  % }
 </pre>
 
 使う側は、以下のようにします。
