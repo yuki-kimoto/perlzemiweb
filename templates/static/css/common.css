@@ -84,8 +84,8 @@
     max-width:1020px;
     width:100%;
     font-size:22px;
-    padding:15px 10px 11px 73px;
-    background:url(/images/site-logo.png) no-repeat 10px 5px;
+    padding:15px 10px 11px 94px;
+    background:url(/images/site-logo.png) no-repeat 35px 5px;
   }
   h1 a, h1 a:visited {
     color:white;
@@ -105,7 +105,7 @@
   }
   h3 {
     font-size:20px;
-    border-top:4px solid #00AE50;
+    border-top:4px solid #333399;
     padding:15px 0px 14px 18px;
     letter-spacing:0.5px;
     margin:15px 0 10px 0;
@@ -176,7 +176,7 @@
     padding:5px;
   }
   .side-list-title {
-    background:#00AE50;
+    background:#333399;
     color:white;
     font-weight:bold;
     padding: 12px 0px 10px 0px;
@@ -249,6 +249,14 @@
   }
   .entry {
     padding:0;
+  }
+  h1 {
+    padding:10px;
+    padding-left:70px;
+    background-position:10px 10px;
+  }
+  h1 a, h1 a:visited {
+    font-size:16px;
   }
   h2, p, ul, pre, table {
     width:calc(100% - 30px);
