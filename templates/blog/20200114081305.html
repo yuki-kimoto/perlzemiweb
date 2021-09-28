@@ -4,7 +4,7 @@
 
 <h3>送信されたユーザー情報を取得する</h3>
 
-送信されたユーザー情報は、パラメーターから取得します。ユーザー情報が入ったパラメーターを取得するには<a href="https://tutorial.perlzemi.com/blog/20110501130707.html">paramメソッド</a>を使用します。
+送信されたユーザー情報は、パラメーターから取得します。ユーザー情報が入ったパラメーターを取得するには<a href="https://perlzemi.com/blog/20110501130707.html">paramメソッド</a>を使用します。
 
 <a href="/blog/20200107082558.html">会員登録フォーム</a>からPOSTされた情報を受け取ってみましょう。この処理では、POSTであって、仮登録の処理であるかを、事前に確認しています。
 
@@ -50,7 +50,7 @@
 
 <h4>ユーザーIDが指定されていること</h4>
 
-まず最初に、ユーザーIDが空ではないことを確認しましょう。エラーは、$errorsという<a href="https://tutorial.perlzemi.com/blog/20180208151809.html">ハッシュのリファレンス</a>に保存しておきます。文字列の長さは、<a href="https://tutorial.perlzemi.com/blog/20080926122245.html">length関数</a>で取得できます。
+まず最初に、ユーザーIDが空ではないことを確認しましょう。エラーは、$errorsという<a href="https://perlzemi.com/blog/20180208151809.html">ハッシュのリファレンス</a>に保存しておきます。文字列の長さは、<a href="https://perlzemi.com/blog/20080926122245.html">length関数</a>で取得できます。
 
 <pre>
 my $errors = {};
@@ -68,7 +68,7 @@ else {
 
 ユーザーIDが、ASCIIコードの英数字とアンダーバーの1文字(a-zA-Z0-9_)以上で構成されていることをチェックするには、Perlの正規表現を使いましょう。
 
-<a href="https://tutorial.perlzemi.com/blog/20100827127859.html">正規表現</a>は以下の二つのどちらかで表現できます。素直に<a href="https://tutorial.perlzemi.com/blog/20200114103559.html">文字クラス</a>で書くか、PerlのASCIIコードで構成されたワード文字を表現する文字クラスを使います。
+<a href="https://perlzemi.com/blog/20100827127859.html">正規表現</a>は以下の二つのどちらかで表現できます。素直に<a href="https://perlzemi.com/blog/20200114103559.html">文字クラス</a>で書くか、PerlのASCIIコードで構成されたワード文字を表現する文字クラスを使います。
 
 <pre>
 # 文字クラスで素直に書く
@@ -98,7 +98,7 @@ else {
 
 グローバルに利用されている、Twitterというサービスでは、ユーザーIDは15文字以内となっています。
 
-Mojoliciousスタートアップでは、これを参考にして、ユーザーIDの長さの制限は、15文字以内にします。文字列の長さは、<a href="https://tutorial.perlzemi.com/blog/20080926122245.html">length関数</a>で取得できます。
+Mojoliciousスタートアップでは、これを参考にして、ユーザーIDの長さの制限は、15文字以内にします。文字列の長さは、<a href="https://perlzemi.com/blog/20080926122245.html">length関数</a>で取得できます。
 
 <pre>
 # ユーザー名の長さの制限 15文字
