@@ -1,0 +1,101 @@
+<h2>新規作成、更新が失敗した場合のエラーメッセージボックス</h2>
+
+新規作成、更新が失敗した場合のエラーメッセージボックスのサンプルです。
+
+<ul>
+  <li>jQueryが必要</li>
+  <li>閉じるボタンを実装</li>
+  <li>色調は赤色</li>
+  <li>上部エラーメッセージは固定</li>
+  <li>フォームの各部品にエラーメッセージを表示</li>
+  <li>モーダルではなくページ上部に表示</li>
+</ul>
+
+まず最初にパラメータの項目のバリデーションを行っていることが前提です。
+
+エラーメッセージは、バリデーションが失敗したときに、$errorsというハッシュリファレンスに保存していきます。エラーが存在するかどうかは、$errorsをデリファレンスした後に、keys関数を使うと確認できます。
+
+<pre>
+# エラーメッセージ
+my $errors = {};
+
+if ($self->req->method eq 'POST') {
+  my $op = param('op') // '';
+  
+  # 登録処理
+  if ($op eq 'register') {
+    my $title = param('title');
+    my $price = param('price');
+    
+    # バリデーション
+    unless (length $title) {
+      $errors->{title} = 'タイトルを入力してください';
+    }
+
+    unless (length $price) {
+      $errors->{price} = '価格を入力してください';
+    }
+    
+    # バリデーションが成功した場合の処理
+    unless (keys %$errors) {
+      
+    }
+  }
+}
+</pre>
+
+エラーが発生した場合に、上部にエラーであることを示すメッセージを表示しましょう。
+
+<pre>
+<style>
+  .error_message {
+    padding:3px 8px 25px 8px;
+    background:#ffeeee;
+    border:1px solid #ddcccc;
+    border-radius:5px;
+    color:#663333;
+    width:calc(100% - 15px);
+    margin:10px auto;
+  }
+  .error_message_close {
+    text-align:right;
+  }
+  .error_message_close_button {
+    text-align:right;
+    cursor:pointer;
+    font-size:18px;
+  }
+  .error_message_item {
+    color:red;
+  }
+</style>
+
+% if (keys %$errors) {
+  <div class="error_message">
+    <div class="error_message_close">
+      <span class="error_message_close_button" onclick="$(this).closest('.error_message').hide()">×</span>
+    </div>
+    <div class="error_message_text">
+      入力項目に誤りがあります。
+    </div>
+  </div>
+% }
+</pre>
+
+フォームの各項目にも、エラーメッセージを表示しましょう。defined-or演算子を使って、エラーメッセージが定義されていた場合は、エラーメッセージを表示、そうでない場合は、空文字にしています。
+
+<pre>
+<form action="<%= url_for %>" method="POST">
+  <div>
+    <b>タイトル:</b>
+    <%= text_field 'title' %> <span class="error_message_item"><%= $errors->{title} // '' %></span>
+  </div>
+  <div>
+    <b>価格:</b>
+    <%= text_field 'price' %> <span class="error_message_item"><%= $errors->{price} // '' %></span>
+  </div>
+
+  %= hidden_field op => 'register';
+  <%= submit_button '新規作成' %>
+</form>
+</pre>
